@@ -1,0 +1,93 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="feedback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:float" name="version"/>
+        <xs:element name="report_metadata">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="org_name"/>
+              <xs:element type="xs:string" name="email"/>
+              <xs:element type="xs:string" name="extra_contact_info"/>
+              <xs:element type="xs:string" name="report_id"/>
+              <xs:element name="date_range">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:int" name="begin"/>
+                    <xs:element type="xs:int" name="end"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="policy_published">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="domain"/>
+              <xs:element type="xs:string" name="adkim"/>
+              <xs:element type="xs:string" name="aspf"/>
+              <xs:element type="xs:string" name="p"/>
+              <xs:element type="xs:byte" name="pct"/>
+              <xs:element type="xs:byte" name="fo"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="record" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="row">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="source_ip"/>
+                    <xs:element type="xs:byte" name="count"/>
+                    <xs:element name="policy_evaluated">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="disposition"/>
+                          <xs:element type="xs:string" name="dkim"/>
+                          <xs:element type="xs:string" name="spf"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="identifiers">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="header_from"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="auth_results">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="dkim">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="result"/>
+                          <xs:element type="xs:string" name="domain"/>
+                          <xs:element type="xs:string" name="selector"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="spf">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="domain"/>
+                          <xs:element type="xs:string" name="result"/>
+                          <xs:element type="xs:string" name="scope"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
