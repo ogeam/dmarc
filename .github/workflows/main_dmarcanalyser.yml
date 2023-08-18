@@ -28,7 +28,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: '${{ github.workspace }}/target/dmarc-1.0.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -50,4 +50,4 @@ jobs:
           app-name: 'dmarcanalyser'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_471B9C11FB814F1793B88F781C0F0023 }}
-          package: '*.jar'
+          package: 'dmarc-1.0.jar'
